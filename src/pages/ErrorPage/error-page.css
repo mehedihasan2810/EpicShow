@@ -1,0 +1,26 @@
+.error-page {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.error-page__title {
+  color: rgba(243, 9, 9, 0.75);
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.error-page__link {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  color: rgb(123, 123, 49);
+  text-decoration: underline;
+}
+
+.error-page__img {
+  width: 600px;
+  border-radius: 8px;
+}
