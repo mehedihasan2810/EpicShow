@@ -16,8 +16,12 @@ const Home = () => {
   return (
     <div className="home">
       <div className="home__left">
-        {isLoading || error ? (
-          "Loading..."
+        {isLoading ? (
+          <div style={{ height: "60vh", fontSize: "1.2rem" }}>Loading...</div>
+        ) : error ? (
+          <div style={{ height: "60vh", fontSize: "1.2rem" }}>
+            Something went wrong! Please try again
+          </div>
         ) : (
           <>
             <HeroSlider shows={data} />
@@ -34,8 +38,10 @@ const Home = () => {
             <button>See All</button>
           </div>
           <ul className="latest-updates__list">
-            {isLoading || error
+            {isLoading
               ? "Loading..."
+              : error
+              ? "Something went wrong! Please try again"
               : data.map((show) => (
                   <Link key={show.show.id} to="/">
                     <li className="latest-updates__item">

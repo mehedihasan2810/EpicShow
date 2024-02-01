@@ -4,6 +4,8 @@
   background-color: var(--secondary-color);
   padding: 0.8rem;
   margin-block-start: 0.5rem;
+  box-shadow: var(--shadow);
+  border-radius: 0.4rem;
 }
 
 .show-details {
@@ -67,6 +69,14 @@
 .cast {
   display: flex;
   gap: 0.5rem;
+}
+
+.loading-error-content{
+  max-width: 1400px;
+  height: 70vh;
+  margin-inline: auto;
+  font-size: 1.2rem;
+  margin-block-start: 1rem;
 }
 
 @media screen and (max-width: 768px) {

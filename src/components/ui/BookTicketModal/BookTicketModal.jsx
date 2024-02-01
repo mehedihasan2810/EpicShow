@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { saveToLocalStorage } from "../../../u/utils";
 import "./book-ticket-modal.css";
 
 const BookTicketModal = ({ openModal, onCloseModal, show }) => {
+  const [isSavedToLS, setIsSavedToLS] = useState(false);
   return (
     <aside className={`book-ticket ${openModal ? "show-modal" : ""}`}>
       <form
@@ -10,13 +12,18 @@ const BookTicketModal = ({ openModal, onCloseModal, show }) => {
 
           const formData = new FormData(e.target);
 
-
           saveToLocalStorage(Object.fromEntries(formData));
 
-          onCloseModal(e);
+          setIsSavedToLS(true);
         }}
       >
-        <button onClick={onCloseModal} className="close-modal-btn">
+        <button
+          onClick={(e) => {
+            setIsSavedToLS(false);
+            onCloseModal(e);
+          }}
+          className="close-modal-btn"
+        >
           {" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -26,6 +33,12 @@ const BookTicketModal = ({ openModal, onCloseModal, show }) => {
             <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
           </svg>
         </button>
+
+        {isSavedToLS && (
+          <div className="ls-confirm-msg">
+            Saved to localStorage successfully
+          </div>
+        )}
         <label htmlFor="movieName">Movie Name:</label>
         <input
           type="text"
@@ -78,7 +91,7 @@ const BookTicketModal = ({ openModal, onCloseModal, show }) => {
         />
 
         <button className="modal-confirm-btn" type="submit">
-          Confirm Ticket
+          Confirm
         </button>
       </form>
     </aside>

@@ -8,7 +8,7 @@ const ShowsCard = ({ show }) => {
     <Link className="shows-card" to={`/${showData.id}`}>
       <img
         className="shows-card__img"
-        src={showData.image?.original}
+        src={showData.image?.original || "/placeholder-image.jpg"}
         alt={showData.name}
       />
       <div className="shows-card__content">

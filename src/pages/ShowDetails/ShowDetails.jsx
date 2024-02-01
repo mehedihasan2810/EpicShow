@@ -4,6 +4,7 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import ShowsSuggestion from "../../components/ShowDetails/ShowsSuggestion/ShowsSuggestion";
 
 const ShowDetails = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -14,8 +15,9 @@ const ShowDetails = () => {
     fetch("https://api.tvmaze.com/search/shows?q=all").then((res) => res.json())
   );
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Something went wrong!</div>;
+  if (isLoading) return <div className="loading-error-content">Loading...</div>;
+  if (error)
+    return <div className="loading-error-content">Something went wrong!</div>;
 
   const { show } = data.find((show) => show.show.id === Number(showId));
 
@@ -34,7 +36,7 @@ const ShowDetails = () => {
               {show.summary
                 .replace("<p>", "")
                 .replace("</p>", "")
-                .replace("</b>", "")
+                .replace("<b>", "")
                 .replace("</b>", "")}
             </div>
 
@@ -78,9 +80,9 @@ const ShowDetails = () => {
 
             <div className="cast">
               <div>Cast:</div>
-              <div>Johnny |</div>
-              <div>Johnny</div>
-              <div>Johnny</div>
+              {/* <div>Johnny |</div>
+                <div>Johnny</div>
+                <div>Johnny</div> */}
             </div>
 
             <div className="runtime">Runtime: {show.runtime}</div>
@@ -96,6 +98,8 @@ const ShowDetails = () => {
           </figcaption>
         </figure>
       </section>
+
+      <ShowsSuggestion shows={data}/>
 
       {createPortal(
         <BookTicketModal

@@ -2,13 +2,13 @@
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.349);
-  /* overflow: hidden; */
   display: grid;
   place-items: center;
   visibility: hidden;
   opacity: 0;
   z-index: 100;
   transition: all 200ms ease-out;
+  padding-inline: 0.8rem;
 }
 
 .book-ticket.show-modal {
@@ -32,9 +32,9 @@
   right: 0;
   background-color: transparent;
   border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  transform: translate(40px, -40px);
+  height: 35px;
+  width: 35px;
+  transform: translate(35px, -35px);
   border: 0;
   background-color: #fff;
   cursor: pointer;
@@ -81,4 +81,17 @@
 .book-ticket .modal-confirm-btn:hover {
   background-color: transparent;
   color: var(--primary-color);
+}
+
+.ls-confirm-msg {
+  background-color: #d1fae5;
+  padding: 1rem;
+  color: #047857;
+  border-radius: 0.4rem;
+}
+
+@media screen and (max-width: 768px) {
+  .close-modal-btn {
+    transform: translate(5px, -40px);
+  }
 }
