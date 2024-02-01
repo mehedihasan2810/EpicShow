@@ -69,4 +69,17 @@
   gap: 0.5rem;
 }
 
+@media screen and (max-width: 768px) {
+  .show-details {
+    display: flex;
+    flex-direction: column;
+  }
 
+  .show-details__img {
+    margin-inline: auto;
+  }
+
+  .show-details button {
+    width: 100%;
+  }
+}

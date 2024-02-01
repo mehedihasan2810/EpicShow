@@ -84,7 +84,6 @@
 .latest-updates__item:hover {
   background-color: rgba(0, 0, 0, 0.1);
   outline: 3px solid var(--primary-color);
-
 }
 
 .latest-updates__img {
@@ -112,3 +111,13 @@
 /* ---------------------------
   LATEST UPDATE STYLES END  
  ----------------------------- */
+
+@media screen and (max-width: 768px) {
+  .home__right {
+    display: none;
+  }
+
+  .home__left {
+    width: 100%;
+  }
+}

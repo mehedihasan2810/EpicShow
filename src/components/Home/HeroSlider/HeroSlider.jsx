@@ -1,7 +1,34 @@
+import { useEffect } from "react";
 import ShowsCard from "../../ui/ShowsCard/ShowsCard";
 import "./hero-slider.css";
 
 const HeroSlider = ({ shows }) => {
+  useEffect(() => {
+    const swiperEl = document.querySelector("swiper-container");
+    Object.assign(swiperEl, {
+      slidesPerView: 2,
+      spaceBetween: 10,
+      pagination: {
+        clickable: true,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 10,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 10,
+        },
+      },
+    });
+    swiperEl.initialize();
+  }, []);
+
   return (
     <section className="hero-slider">
       <swiper-container
@@ -9,7 +36,7 @@ const HeroSlider = ({ shows }) => {
         pagination="true"
         pagination-clickable="true"
         space-between="10"
-        slides-per-view="4"
+        // slides-per-view="3"
         autoplay-delay="2500"
         autoplay-disable-on-interaction="false"
       >
@@ -17,8 +44,8 @@ const HeroSlider = ({ shows }) => {
           // <ShowsCard key={i} show={show} />
 
           <swiper-slide key={i}>
-          <ShowsCard key={i} show={show} />
-        </swiper-slide>
+            <ShowsCard key={i} show={show} />
+          </swiper-slide>
         ))}
 
         {/* <swiper-slide>

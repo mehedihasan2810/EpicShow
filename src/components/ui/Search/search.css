@@ -53,3 +53,9 @@
 .search__btn:hover {
   opacity: 0.9;
 }
+
+@media screen and (max-width: 768px) {
+  .search {
+    display: none;
+  }
+}

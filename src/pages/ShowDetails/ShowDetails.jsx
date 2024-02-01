@@ -25,8 +25,8 @@ const ShowDetails = () => {
         <figure className="show-details">
           <img
             className="show-details__img"
-            src="https://static.tvmaze.com/uploads/images/original_untouched/413/1034988.jpg"
-            alt=""
+            src={show.image?.original}
+            alt={show.name}
           />
           <figcaption>
             <h2 className="show-details__title">{show.name}</h2>
@@ -98,8 +98,8 @@ const ShowDetails = () => {
       </section>
 
       {createPortal(
-        <BookTicketModal 
-        show={show}
+        <BookTicketModal
+          show={show}
           openModal={openModal}
           onCloseModal={(e) => {
             e.preventDefault();
