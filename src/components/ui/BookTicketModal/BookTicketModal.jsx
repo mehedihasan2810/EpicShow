@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { saveToLocalStorage } from "../../../u/utils";
 import "./book-ticket-modal.css";
+import { saveToLocalStorage } from "../../../utils";
 
 const BookTicketModal = ({ openModal, onCloseModal, show }) => {
   const [isSavedToLS, setIsSavedToLS] = useState(false);
