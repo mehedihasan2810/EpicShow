@@ -1,0 +1,84 @@
+.book-ticket {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.349);
+  /* overflow: hidden; */
+  display: grid;
+  place-items: center;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 100;
+  transition: all 200ms ease-out;
+}
+
+.book-ticket.show-modal {
+  visibility: visible;
+  opacity: 1;
+}
+
+.book-ticket form {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  transform: translate(40px, -40px);
+  border: 0;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.close-modal-btn:hover {
+  opacity: 0.9;
+}
+
+.book-ticket label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.book-ticket input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.book-ticket input:focus-visible {
+  outline-offset: 1px;
+  outline: 2px solid #000;
+}
+
+.book-ticket .modal-confirm-btn {
+  margin-top: 0.5rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 0.2rem;
+  background-color: var(--primary-color);
+  font-weight: 500;
+  color: #fff;
+  transition: background-color 300ms ease-out;
+  cursor: pointer;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  width: 100%;
+}
+
+.book-ticket .modal-confirm-btn:hover {
+  background-color: transparent;
+  color: var(--primary-color);
+}

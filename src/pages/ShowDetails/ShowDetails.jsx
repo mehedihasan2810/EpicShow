@@ -1,50 +1,36 @@
-import { useState } from "react";
 import "./show-details.css";
-
-const tabBtns = [
-  {
-    id: 1,
-    content: "Cast",
-  },
-  {
-    id: 2,
-    content: "Info",
-  },
-  {
-    id: 3,
-    content: "Trailer",
-  },
-  {
-    id: 4,
-    content: "Episodes",
-  },
-  ,
-];
+import BookTicketModal from "../../components/ui/BookTicketModal/BookTicketModal";
+import { useState } from "react";
+import { createPortal } from "react-dom";
 
 const ShowDetails = () => {
-  const [activeTab, setActiveTab] = useState("cast");
+  const [openModal, setOpenModal] = useState(false);
   return (
-    <section className="show-details__section">
-      <figure className="show-details">
-        <img
-          className="show-details__img"
-          src="https://static.tvmaze.com/uploads/images/original_untouched/413/1034988.jpg"
-          alt=""
-        />
-        <figcaption>
-          <h2 className="show-details__title">All rise movie title show foo</h2>
-          <div>
-            <p>
-              <b>All Rise</b> is a courthouse drama that follows the chaotic,
-              hopeful and sometimes absurd lives of its judges, prosecutors and
-              public defenders, as they work with bailiffs, clerks and cops to
-              get justice for the people of Los Angeles amidst a flawed legal
-              process. Among them is newly appointed Judge Lola Carmichael, a
-              highly regarded and impressive deputy district attorney who
-              doesn't intend to sit back on the bench in her new role, but
-              instead leans in, immediately pushing the boundaries and
-              challenging the expectations of what a judge can be.
-            </p>
+    <>
+      <section className="show-details__section">
+        <figure className="show-details">
+          <img
+            className="show-details__img"
+            src="https://static.tvmaze.com/uploads/images/original_untouched/413/1034988.jpg"
+            alt=""
+          />
+          <figcaption>
+            <h2 className="show-details__title">
+              All rise movie title show foo
+            </h2>
+            <div>
+              <p>
+                <b>All Rise</b> is a courthouse drama that follows the chaotic,
+                hopeful and sometimes absurd lives of its judges, prosecutors
+                and public defenders, as they work with bailiffs, clerks and
+                cops to get justice for the people of Los Angeles amidst a
+                flawed legal process. Among them is newly appointed Judge Lola
+                Carmichael, a highly regarded and impressive deputy district
+                attorney who doesn't intend to sit back on the bench in her new
+                role, but instead leans in, immediately pushing the boundaries
+                and challenging the expectations of what a judge can be.
+              </p>
+            </div>
 
             <div className="show-details__lang">
               <div>English</div>
@@ -95,11 +81,28 @@ const ShowDetails = () => {
             <div className="country">Country: America</div>
             <div className="language">language: English</div>
 
-            <button>Book Ticket</button>
-          </div>
-        </figcaption>
-      </figure>
-    </section>
+            <button
+              onClick={() => {
+                setOpenModal(true);
+              }}
+            >
+              Book Ticket
+            </button>
+          </figcaption>
+        </figure>
+      </section>
+
+      {createPortal(
+        <BookTicketModal
+          openModal={openModal}
+          onCloseModal={(e) => {
+            e.preventDefault();
+            setOpenModal(false);
+          }}
+        />,
+        document.body
+      )}
+    </>
   );
 };
 
