@@ -1,1 +1,1 @@
-# [EpicShow - Movie Show streaming platform](https://epic-show.vercel.app/)
+# [EpicShow - A Movie Show streaming platform](https://epic-show.vercel.app/)
