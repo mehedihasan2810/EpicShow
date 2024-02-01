@@ -8,12 +8,11 @@
 
 .header {
   justify-content: space-between;
-  max-width: 1400px;
+  max-width: 1200px;
   border-radius: 0.4rem;
   background-color: var(--secondary-color);
   margin-inline: auto;
   box-shadow: var(--shadow);
-
   padding-inline: 1rem;
   margin-block-start: 0.5rem;
 }
@@ -73,7 +72,7 @@
   position: absolute;
   left: 0;
   top: 105%;
-  z-index: 1;
+  z-index: 10;
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 0;

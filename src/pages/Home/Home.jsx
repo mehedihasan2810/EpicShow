@@ -1,11 +1,27 @@
-import { useTitlePerPage } from "../../hooks/useTitlePerPage"
-import "./home.css"
+import HeroSlider from "../../components/Home/HeroSlider/HeroSlider";
+import LatestShows from "../../components/Home/LatestShows/LatestShows";
+import UpcomingShows from "../../components/Home/UpcomingShows/UpcomingShows";
+import { useTitlePerPage } from "../../hooks/useTitlePerPage";
+import "./home.css";
 
 const Home = () => {
-  useTitlePerPage("Home")
+  useTitlePerPage("Home");
   return (
-    <div>Home</div>
-  )
-}
+    <div className="home">
+      <div className="home__left">
+        <HeroSlider />
+      <LatestShows />
+      <UpcomingShows/>
+      </div>
 
-export default Home
+      <div className="home__right">
+       <div>
+        <div>helloo my name is mehedi hasan</div>
+       </div>
+      </div>
+      
+    </div>
+  );
+};
+
+export default Home;

@@ -1,0 +1,25 @@
+.home {
+  max-width: 1400px;
+  margin-inline: auto;
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.home__left, .home__right{
+    border-radius: 0.4rem;
+    box-shadow: var(--shadow);
+}
+
+.home__left {
+  background-color: var(--secondary-color);
+  padding: 1rem;
+  width: 75%;
+
+}
+
+.home__right {
+    background-color: var(--secondary-color);
+    padding: 1rem;
+   flex-grow: 1;
+}
