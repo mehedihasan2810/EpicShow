@@ -4,7 +4,6 @@ import "./shows-card.css";
 const ShowsCard = ({ show }) => {
   const { show: showData } = show;
 
-  console.log(showData.image);
   return (
     <Link className="shows-card" to={`/${showData.id}`}>
       <img

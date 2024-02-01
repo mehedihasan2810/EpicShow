@@ -2,7 +2,6 @@ import ShowsCard from "../../ui/ShowsCard/ShowsCard";
 import "./latest-shows.css";
 
 const LatestShows = ({ shows }) => {
-  console.log(shows);
   return (
     <section className="latest-shows">
       <div className="latest-shows__header">

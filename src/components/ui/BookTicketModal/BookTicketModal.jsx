@@ -10,7 +10,6 @@ const BookTicketModal = ({ openModal, onCloseModal, show }) => {
 
           const formData = new FormData(e.target);
 
-          console.log(Object.fromEntries(formData));
 
           saveToLocalStorage(Object.fromEntries(formData));
 
