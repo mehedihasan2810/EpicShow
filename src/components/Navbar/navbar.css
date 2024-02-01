@@ -8,7 +8,7 @@
 
 .header {
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 1400px;
   border-radius: 0.4rem;
   background-color: var(--secondary-color);
   margin-inline: auto;
