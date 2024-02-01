@@ -38,3 +38,14 @@
   background-color: var(--primary-color);
   color: var(--secondary-color);
 }
+
+@media (max-width: 1024px) {
+  .latest-shows-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .latest-shows-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

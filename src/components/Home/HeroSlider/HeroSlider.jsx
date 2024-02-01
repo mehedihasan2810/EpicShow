@@ -1,6 +1,7 @@
+import ShowsCard from "../../ui/ShowsCard/ShowsCard";
 import "./hero-slider.css";
 
-const HeroSlider = () => {
+const HeroSlider = ({ shows }) => {
   return (
     <section className="hero-slider">
       <swiper-container
@@ -12,7 +13,15 @@ const HeroSlider = () => {
         autoplay-delay="2500"
         autoplay-disable-on-interaction="false"
       >
-        <swiper-slide>
+        {shows.map((show, i) => (
+          // <ShowsCard key={i} show={show} />
+
+          <swiper-slide key={i}>
+          <ShowsCard key={i} show={show} />
+        </swiper-slide>
+        ))}
+
+        {/* <swiper-slide>
           <img
             src="https://static.tvmaze.com/uploads/images/original_untouched/413/1034988.jpg"
             alt="Poster of all rise show"
@@ -52,7 +61,7 @@ const HeroSlider = () => {
             src="https://static.tvmaze.com/uploads/images/original_untouched/413/1034988.jpg"
             alt="Poster of all rise show"
           ></img>
-        </swiper-slide>
+        </swiper-slide> */}
         {/* <swiper-slide>Slide 7</swiper-slide>
         <swiper-slide>Slide 8</swiper-slide>
         <swiper-slide>Slide 9</swiper-slide> */}

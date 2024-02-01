@@ -1,18 +1,20 @@
 import { saveToLocalStorage } from "../../../u/utils";
 import "./book-ticket-modal.css";
 
-const BookTicketModal = ({ openModal, onCloseModal }) => {
+const BookTicketModal = ({ openModal, onCloseModal, show }) => {
   return (
     <aside className={`book-ticket ${openModal ? "show-modal" : ""}`}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-    
-          const formData = new FormData(e.target)
 
-          console.log(Object.fromEntries(formData))
+          const formData = new FormData(e.target);
+
+          console.log(Object.fromEntries(formData));
 
           saveToLocalStorage(Object.fromEntries(formData));
+
+          onCloseModal(e);
         }}
       >
         <button onClick={onCloseModal} className="close-modal-btn">
@@ -25,34 +27,34 @@ const BookTicketModal = ({ openModal, onCloseModal }) => {
             <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
           </svg>
         </button>
-        <label for="movieName">Movie Name:</label>
+        <label htmlFor="movieName">Movie Name:</label>
         <input
           type="text"
           id="movieName"
           name="movieName"
-          readonly
-          value="All Rise"
+          readOnly
+          value={show.name}
         />
 
-        <label for="genres">Genres:</label>
+        <label htmlFor="genres">Genres:</label>
         <input
           type="text"
           id="genres"
           name="genres"
-          readonly
-          value="Drama, Legal"
+          readOnly
+          value={show.genres[0]}
         />
 
-        <label for="premiereDate">Premiere Date:</label>
+        <label htmlFor="premiereDate">Premiere Date:</label>
         <input
           type="text"
           id="premiereDate"
           name="premiereDate"
-          readonly
-          value="2019-09-23"
+          readOnly
+          value={show.premiered}
         />
 
-        <label for="userName">Your Name:</label>
+        <label htmlFor="userName">Your Name:</label>
         <input
           type="text"
           id="userName"
@@ -60,7 +62,7 @@ const BookTicketModal = ({ openModal, onCloseModal }) => {
           placeholder="Enter your name"
         />
 
-        <label for="email">Email:</label>
+        <label htmlFor="email">Email:</label>
         <input
           type="email"
           id="email"
@@ -68,7 +70,7 @@ const BookTicketModal = ({ openModal, onCloseModal }) => {
           placeholder="Enter your email"
         />
 
-        <label for="seats">Number of Seats:</label>
+        <label htmlFor="seats">Number of Seats:</label>
         <input
           type="number"
           id="seats"

@@ -2,9 +2,23 @@ import "./show-details.css";
 import BookTicketModal from "../../components/ui/BookTicketModal/BookTicketModal";
 import { useState } from "react";
 import { createPortal } from "react-dom";
+import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
 
 const ShowDetails = () => {
   const [openModal, setOpenModal] = useState(false);
+
+  let { showId } = useParams();
+
+  const { isLoading, error, data } = useQuery("book-ticket", () =>
+    fetch("https://api.tvmaze.com/search/shows?q=all").then((res) => res.json())
+  );
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Something went wrong!</div>;
+
+  const { show } = data.find((show) => show.show.id === Number(showId));
+
   return (
     <>
       <section className="show-details__section">
@@ -15,29 +29,21 @@ const ShowDetails = () => {
             alt=""
           />
           <figcaption>
-            <h2 className="show-details__title">
-              All rise movie title show foo
-            </h2>
+            <h2 className="show-details__title">{show.name}</h2>
             <div>
-              <p>
-                <b>All Rise</b> is a courthouse drama that follows the chaotic,
-                hopeful and sometimes absurd lives of its judges, prosecutors
-                and public defenders, as they work with bailiffs, clerks and
-                cops to get justice for the people of Los Angeles amidst a
-                flawed legal process. Among them is newly appointed Judge Lola
-                Carmichael, a highly regarded and impressive deputy district
-                attorney who doesn't intend to sit back on the bench in her new
-                role, but instead leans in, immediately pushing the boundaries
-                and challenging the expectations of what a judge can be.
-              </p>
+              {show.summary
+                .replace("<p>", "")
+                .replace("</p>", "")
+                .replace("</b>", "")
+                .replace("</b>", "")}
             </div>
 
             <div className="show-details__lang">
-              <div>English</div>
+              <div>{show.language}</div>
               <div>|</div>
-              <div>Drama</div>
+              <div>{show.genres[0]}</div>
               <div>|</div>
-              <div>Scripted</div>
+              <div>{show.type}</div>
               <div>|</div>
               <div className="show-details__rating">
                 {" "}
@@ -56,17 +62,17 @@ const ShowDetails = () => {
                     d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"
                   />
                 </svg>
-                <span>4.5</span>
+                <span>{show.rating.average}</span>
               </div>
             </div>
 
             <div className="show-details_premiere">
               <div>
-                Premiered - <div>2023-11-18</div>
+                Premiered - <div>{show.premiered}</div>
               </div>
               <div>|</div>
               <div>
-                Ended - <div>2023-11-18</div>
+                Ended - <div>{show.ended}</div>
               </div>
             </div>
 
@@ -77,9 +83,8 @@ const ShowDetails = () => {
               <div>Johnny</div>
             </div>
 
-            <div className="runtime">Runtime: 1hrs</div>
-            <div className="country">Country: America</div>
-            <div className="language">language: English</div>
+            <div className="runtime">Runtime: {show.runtime}</div>
+            <div className="language">language: {show.language}</div>
 
             <button
               onClick={() => {
@@ -93,7 +98,8 @@ const ShowDetails = () => {
       </section>
 
       {createPortal(
-        <BookTicketModal
+        <BookTicketModal 
+        show={show}
           openModal={openModal}
           onCloseModal={(e) => {
             e.preventDefault();

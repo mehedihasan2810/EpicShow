@@ -1,7 +1,7 @@
 import ShowsCard from "../../ui/ShowsCard/ShowsCard";
 import "./upcoming-shows.css";
 
-const UpcomingShows = () => {
+const UpcomingShows = ({ shows }) => {
   return (
     <section className="upcoming-shows">
       <div className="upcoming-shows__header">
@@ -9,8 +9,8 @@ const UpcomingShows = () => {
         <button>See All</button>
       </div>
       <div className="upcoming-shows-grid">
-        {Array.from({ length: 10 }).map((_, i) => (
-          <ShowsCard key={i} />
+        {shows.map((show, i) => (
+          <ShowsCard key={i} show={show} />
         ))}
       </div>
     </section>

@@ -1,7 +1,8 @@
 import ShowsCard from "../../ui/ShowsCard/ShowsCard";
 import "./latest-shows.css";
 
-const LatestShows = () => {
+const LatestShows = ({ shows }) => {
+  console.log(shows);
   return (
     <section className="latest-shows">
       <div className="latest-shows__header">
@@ -9,8 +10,8 @@ const LatestShows = () => {
         <button>See All</button>
       </div>
       <div className="latest-shows-grid">
-        {Array.from({ length: 10 }).map((_, i) => (
-          <ShowsCard key={i} />
+        {shows.map((show, i) => (
+          <ShowsCard key={i} show={show} />
         ))}
       </div>
     </section>
