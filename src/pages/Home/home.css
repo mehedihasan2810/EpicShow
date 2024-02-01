@@ -6,20 +6,109 @@
   margin-top: 0.5rem;
 }
 
-.home__left, .home__right{
-    border-radius: 0.4rem;
-    box-shadow: var(--shadow);
+.home__left,
+.home__right {
+  border-radius: 0.4rem;
+  box-shadow: var(--shadow);
 }
 
 .home__left {
   background-color: var(--secondary-color);
   padding: 1rem;
   width: 75%;
-
 }
 
 .home__right {
-    background-color: var(--secondary-color);
-    padding: 1rem;
-   flex-grow: 1;
+  background-color: var(--secondary-color);
+  padding: 1rem;
+  flex-grow: 1;
+  /* height: fit-content; */
 }
+
+/* ---------------------------
+  LATEST UPDATE STYLES START
+ ----------------------------- */
+
+.latest-updates__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.latest-updates__header h2 {
+  color: var(--primary-color);
+  padding-inline-start: 0.5rem;
+  border-inline-start: 5px solid var(--primary-color);
+  line-height: 1.2;
+}
+
+.latest-updates__header button {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 500;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  transition: background-color 300ms ease-out;
+  padding-block: 0.1rem;
+  padding-inline: 0.5rem;
+}
+
+.latest-updates__header button:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.latest-updates__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.latest-updates__item {
+  display: flex;
+  gap: 1rem;
+  height: min-content;
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: all 200ms;
+  border-radius: 0.2rem;
+  overflow: hidden;
+  outline-offset: 2px;
+  outline: 3px solid transparent;
+  transition: all 200ms ease-out;
+}
+
+.latest-updates__item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  outline: 3px solid var(--primary-color);
+
+}
+
+.latest-updates__img {
+  /* height: 70px; */
+  max-height: 100px;
+  object-fit: contain;
+}
+
+.latest-updates__title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-dark-color);
+}
+
+.latest-updates__release,
+.latest-updates__rating {
+  font-size: 0.85rem;
+  color: var(--primary-color);
+}
+
+.latest-updates__rating {
+  display: inline-flex;
+  gap: 0.2rem;
+}
+/* ---------------------------
+  LATEST UPDATE STYLES END  
+ ----------------------------- */
