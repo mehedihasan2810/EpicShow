@@ -3,7 +3,7 @@ import BookTicketModal from "../../components/ui/BookTicketModal/BookTicketModal
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ShowsSuggestion from "../../components/ShowDetails/ShowsSuggestion/ShowsSuggestion";
 
 const ShowDetails = () => {
@@ -80,13 +80,15 @@ const ShowDetails = () => {
 
             <div className="cast">
               <div>Cast:</div>
-              {/* <div>Johnny |</div>
-                <div>Johnny</div>
-                <div>Johnny</div> */}
             </div>
 
             <div className="runtime">Runtime: {show.runtime}</div>
-            <div className="language">language: {show.language}</div>
+            <div className="country">Country: {show.network.country.name}</div>
+            <div className="language">Language: {show.language}</div>
+
+            <Link to={show.officialSite} target="blank" className="v-off-site">
+              Visit official site -
+            </Link>
 
             <button
               onClick={() => {
@@ -99,7 +101,7 @@ const ShowDetails = () => {
         </figure>
       </section>
 
-      <ShowsSuggestion shows={data}/>
+      <ShowsSuggestion shows={data} />
 
       {createPortal(
         <BookTicketModal

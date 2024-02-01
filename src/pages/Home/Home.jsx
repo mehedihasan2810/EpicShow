@@ -43,11 +43,13 @@ const Home = () => {
               : error
               ? "Something went wrong! Please try again"
               : data.map((show) => (
-                  <Link key={show.show.id} to="/">
+                  <Link key={show.show.id} to={`/${show.show.id}`}>
                     <li className="latest-updates__item">
                       <img
                         className="latest-updates__img"
-                        src={show.show.image?.medium}
+                        src={
+                          show.show.image?.medium || "/placeholder-image.jpg"
+                        }
                         alt={show.show.name}
                       />
 

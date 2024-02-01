@@ -15,6 +15,7 @@
 
 .show-details__img {
   width: 400px;
+  border-radius: 0.4rem;
 }
 
 .show-details__title {
@@ -61,9 +62,19 @@
 .cast,
 .runtime,
 .country,
-.language {
+.language,
+.country, .v-off-site {
   margin-top: 0.5rem;
   color: var(--text-dark-color);
+}
+
+.v-off-site{
+  display: block;
+  color: var(--primary-color);
+}
+
+.v-off-site:hover{
+  text-decoration: underline;
 }
 
 .cast {
@@ -71,7 +82,7 @@
   gap: 0.5rem;
 }
 
-.loading-error-content{
+.loading-error-content {
   max-width: 1400px;
   height: 70vh;
   margin-inline: auto;

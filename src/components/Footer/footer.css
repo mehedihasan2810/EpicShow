@@ -6,8 +6,9 @@
   padding: 2rem 0.8rem;
   border-radius: 0.4rem;
   box-shadow: var(--shadow);
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .footer > div {
@@ -20,7 +21,12 @@
   color: var(--text-dark-color);
 }
 
+.footer a:hover {
+  color: var(--primary-color);
+}
 
-.footer a:hover{
-    color: var(--primary-color);
+@media screen and (max-width: 768px) {
+  .footer {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

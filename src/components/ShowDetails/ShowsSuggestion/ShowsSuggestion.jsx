@@ -5,7 +5,7 @@ const ShowsSuggestion = ({ shows }) => {
   return (
     <section className="suggestion-shows">
       <div className="suggestion-shows__header">
-        <h2>Shows you might be interested</h2>
+        <h2>Shows you might be interested in</h2>
         <button>See All</button>
       </div>
       <div className="suggestion-shows-grid">
